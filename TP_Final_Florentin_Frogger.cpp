@@ -81,10 +81,8 @@ public:
 	}
 };
 
-
-
 int main() {
-	poasd
+	
 }
 
 
