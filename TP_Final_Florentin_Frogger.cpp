@@ -28,7 +28,7 @@ private:
 public:
 	Linea(int width) {
 		for (int i = 0; i < width; i++) {
-			autos.push_front(false);
+			autos.push_front(true);
 		}
 	}
 	void Mover() {
@@ -55,13 +55,32 @@ private:
 	vector<Linea*> mapa;
 
 public:
+
 	Game(int w = 20, int h = 10) {
 		numeroLineas = h;
 		width = w;
 		quit = false;
+		for (int i = 0; i < numeroLineas; i++) {
+			mapa.push_back(new Linea(width));
+		}
+		jugador = new Jugador(width);
 	}
 	void Dibujar() {
-
+		system("cls");
+		for (int i = 0; i < numeroLineas; i++) {
+			for (int j = 0; j < width; j++) {
+				if (mapa[i]->CheckPos(j)&& i !=0 && i != numeroLineas -1) {
+					cout << "*";
+				}
+				else if (jugador->x == j && jugador->y == i) {
+					cout << "W";
+				}
+				else {
+					cout << " ";
+				}
+			}
+			cout << endl;
+		}
 	}
 
 	void Entrada() {
@@ -82,7 +101,9 @@ public:
 };
 
 int main() {
-	
+	Game game(15, 10);
+	game.Run();
+	return 0;
 }
 
 
