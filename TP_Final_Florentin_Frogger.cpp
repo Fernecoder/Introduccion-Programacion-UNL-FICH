@@ -84,9 +84,27 @@ public:
 	}
 
 	void Entrada() {
-
+		if (_kbhit()) {
+			char tecla = _getch();
+			switch (tecla) {
+			case 'a':
+				jugador->x--;
+				break;
+			case 'd':
+				jugador->x++;
+				break;
+			case 'w':
+				jugador->y--;
+				break;
+			case 's':
+				jugador->y++;
+				break;
+			case 'q':
+				quit = true;
+				break;
+			} 
+		}
 	}
-
 	void Logica() {
 
 	}
