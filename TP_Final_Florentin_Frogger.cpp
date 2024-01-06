@@ -24,21 +24,34 @@ class Linea {
 
 private:
 	deque<bool> autos;
-
+	bool sentDerecho;
 public:
 	Linea(int width) {
 		for (int i = 0; i < width; i++) {
 			autos.push_front(true);
 		}
+		sentDerecho = rand() % 2;
 	}
 	void Mover() {
-		if (rand() % 10 == 1) {
-			autos.push_front(true);
+		if (sentDerecho) {
+			if (rand() % 10 == 1) {
+				autos.push_front(true);
+			}
+			else {
+				autos.push_front(false);
+			}
+			autos.pop_back();
 		}
 		else {
-			autos.push_front(false);
+			if (rand() % 10 == 1) {
+				autos.push_back(true);
+			}
+			else {
+				autos.push_back(false);
+			}
+			autos.pop_front();
 		}
-		autos.push_back(true);
+		
 	}
 	bool CheckPos(int pos) { return autos[pos]; }
 
@@ -50,15 +63,16 @@ private:
 	bool quit;
 	int numeroLineas;
 	int width;
-	int score;
+	int score=0;
 	Jugador* jugador;
 	vector<Linea*> mapa;
 
 public:
-
-	Game(int w = 20, int h = 10) {
-		numeroLineas = h;
-		width = w;
+	
+	Game() {
+		srand(time(NULL));
+		numeroLineas = 10;
+		width = 20;
 		quit = false;
 		for (int i = 0; i < numeroLineas; i++) {
 			mapa.push_back(new Linea(width));
@@ -81,6 +95,10 @@ public:
 			}
 			cout << endl;
 		}
+		cout << endl << "Score:" << score << endl;
+		cout << endl << "INSTRUCCIONES:" << endl;
+		cout << endl << "La letra 'W' representa la rana, para moverla usa las siguentes teclas:" << endl;
+		cout << "W para subir" << endl << "S para bajar" << endl << "A para moverse a la izquierda" << endl << "D para moverse a la derecha" << endl << "Con la letra Q salis del juego" << endl;
 	}
 
 	void Entrada() {
@@ -106,7 +124,21 @@ public:
 		}
 	}
 	void Logica() {
-
+		
+		for (int i = 1; i < numeroLineas - 1; i++) {
+			if (rand() % 10 > 5) {//para modificar la velocidad aumentar la posibilidad del rand
+				mapa[i]->Mover();
+			}
+			if (mapa[i]->CheckPos(jugador->x) && jugador->y == i) {
+				cout << endl << "Juego terminado!" << endl;
+				cout << endl << "Tu puntaje final es:" << score << endl;
+				quit = true;
+			}
+		}
+		if (jugador->y == numeroLineas - 1) {
+			score+=10;
+			jugador->y = 0;
+		}
 	}
 
 	void Run() {
@@ -119,7 +151,7 @@ public:
 };
 
 int main() {
-	Game game(15, 10);
+	Game game;
 	game.Run();
 	return 0;
 }
