@@ -1,0 +1,45 @@
+Frogger
+
+Para el TP Final de introducción a la programación deberán hacer algo similar al Frogger, el famoso juego de la ranita que cruza la calle. No importa si resolución final tiene fallas, lo que importa es que esté bien estructurado.
+
+Deberá:
+
+- Tener una estructura de clases (o sea, Orientado a Objetos, con más de 1 clase)
+
+- En lo posible, utilizar polimorfismo. Sino, al menos herencia.
+
+- Que los modificadores de acceso estén bien usados (public, private, protected)
+
+- Los objetos y métodos deben estar bien definidos, no hacer métodos que hagan múltiples tareas.
+
+- Crear una clase gerencial, es decir una clase que maneje la lógica del juego y llame a los demás objetos. Dejar el main limpio. Sólo un objeto que invoque a un método de iniciar juego.
+
+- ¡¡ Deberán presentarlo en un repositorio git desde el inicio del proyecto (sin excepción) !!
+
+Les recomiendo entender cómo hacer un seguimiento de git antes de empezar a trabajar. No deben generar el repositorio para subir el código final sino que deben ir trabajando con el repositorio desde el inicio del TP para poder ver su evolución.
+
+Cuando tengan el repositorio listo para entregar, si configuran su proyecto como privado (sería lo ideal), pongannos como colaboradores. 
+
+usuario Alejandro: alefortvi@gmail.com
+
+usuario Diego: diegocantelmi82@gmail.com
+
+Detalles gráficos:
+
+- Pantalla de juego
+
+- Puntaje
+
+- Indicador de teclas para jugar
+
+- Un borde
+
+- La rana
+
+- Al menos 2 lineas de obstáculos
+
+Entrega:
+
+- Deberán entregar la dirección de un repositorio
+
+- Hay tiempo hasta el 1 de marzo 2024
