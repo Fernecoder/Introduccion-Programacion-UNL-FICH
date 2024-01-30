@@ -1,4 +1,4 @@
-// TP_Final_Florentin_Frogger.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
+// TP_Final_Florentin_Frogger.cpp 
 //
 
 #include <iostream>
