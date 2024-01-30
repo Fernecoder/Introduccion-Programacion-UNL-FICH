@@ -12,21 +12,26 @@
 
 using namespace std;
 
-class Jugador{
-
+class Iniciales {
 public:
 	int x, y;
-	Jugador(int width) { x = width / 2, y = 0; }
+	Iniciales(int inicialX, int inicialY):x(inicialX), y(inicialY){}
+};
+
+class Jugador : public Iniciales{
+
+public:
+	Jugador(int width) : Iniciales(width / 2, 0) {}
 
 };
 
-class Linea {
+class Linea : public Iniciales {
 
 private:
 	deque<bool> autos;
 	bool sentDerecho;
 public:
-	Linea(int width) {
+	Linea(int width) : Iniciales(0,0) {
 		for (int i = 0; i < width; i++) {
 			autos.push_front(true);
 		}
@@ -126,7 +131,7 @@ public:
 	void Logica() {
 		
 		for (int i = 1; i < numeroLineas - 1; i++) {
-			if (rand() % 10 > 5) {//para modificar la velocidad aumentar la posibilidad del rand
+			if (rand() % 10 > 5) {
 				mapa[i]->Mover();
 			}
 			if (mapa[i]->CheckPos(jugador->x) && jugador->y == i) {
@@ -155,6 +160,5 @@ int main() {
 	game.Run();
 	return 0;
 }
-
 
 
